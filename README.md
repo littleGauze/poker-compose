@@ -1,2 +1,2 @@
 # pokers-compose
-A poker game for new rules from my head :)
+A poker game for new rules from my mind :)
