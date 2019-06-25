@@ -21,4 +21,11 @@ const C_TYPE = {
   SPECIAL: 'special'
 }
 
-module.exports = { N_CARD, S_CARD, C_COUNT, C_TYPE }
+const C_CATE = {
+  SPADE: 4,
+  HEARTS: 3,
+  PLUM_BLOSSOM: 2,
+  DIAMONDS: 1
+}
+
+module.exports = { N_CARD, S_CARD, C_COUNT, C_TYPE, C_CATE }

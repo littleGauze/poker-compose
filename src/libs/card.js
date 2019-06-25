@@ -7,7 +7,7 @@ module.exports = class Card {
 
     this._name = name
     this._type = type
-    if (S_CARD[card]) {
+    if (S_CARD[name]) {
       this._value = S_CARD[name]
     } else {
       this._value = N_CARD[name]

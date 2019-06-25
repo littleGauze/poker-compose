@@ -1,7 +1,7 @@
 
-const Card = require('./libs/card')
+const NormalCard = require('./libs/normalCard')
 const SpecialCard = require('./libs/specialCard')
-const { C_COUNT, N_CARD, S_CARD } = require('./libs/consts')
+const { C_COUNT, N_CARD, S_CARD, C_CATE } = require('./libs/consts')
 
 const sCards = Symbol('#cards')
 
@@ -20,7 +20,9 @@ module.exports = class Pokers {
   init () {
     // create 4 times normal cards
     for (let i = 0; i < C_COUNT.NC; i++) {
-      this._cards.push(...Object.keys(N_CARD).map((name) => new Card(name)))
+      for (let [cate] of Object.entries(C_CATE)) {
+        this[sCards].push(...Object.keys(N_CARD).map((name) => new NormalCard(name, cate)))
+      }
     }
 
     // create special cards
@@ -34,11 +36,13 @@ module.exports = class Pokers {
   // shuffle cards with ${this._count} times
   shuffle () {
     const len = this[sCards].length
-    const idx = getRandomIdx(len)
-    for (let i = 0; i < this._count; i++) {
-      const tmp = this[sCards][i]
-      this[sCards][i] = this[sCards][idx]
-      this[sCards][idx] = tmp
+    for (let n = 0; n < this._count; n++) {
+      for (let i = 0; i < len; i++) {
+        const idx = getRandomIdx(len)
+        const tmp = this[sCards][i]
+        this[sCards][i] = this[sCards][idx]
+        this[sCards][idx] = tmp
+      }
     }
   }
 
